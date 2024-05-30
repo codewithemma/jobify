@@ -8,6 +8,7 @@ import {
   Error,
   Stats,
   AllJobs,
+  AddJob,
 } from "./pages";
 const checkDefaultTheme = () => {
   const isDarkTheme = localStorage.getItem("dark-theme") === "true";
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
   },
 ]);
 
-const AddJob = () => {
+const App = () => {
   return <RouterProvider router={router} />;
 };
-export default AddJob;
+export default App;
