@@ -12,7 +12,9 @@ import {
 } from "./pages";
 import { action as registerAction } from "./pages/Register";
 import { action as loginAction } from "./pages/Login";
+import { action as createJobAction } from "./pages/AddJob";
 import { loader as DashboardLoader } from "./pages/DashboardLayout";
+import { loader as AllJobsLoader } from "./pages/AllJobs";
 const checkDefaultTheme = () => {
   const isDarkTheme = localStorage.getItem("dark-theme") === "true";
   document.body.classList.toggle("dark-theme", isDarkTheme);
@@ -41,7 +43,7 @@ const router = createBrowserRouter([
         element: <DashboardLayout isDarkThemeEnabled={isDarkThemeEnabled} />,
         loader: DashboardLoader,
         children: [
-          { index: true, element: <AddJob /> },
+          { index: true, element: <AddJob />, action: createJobAction },
           {
             path: "stats",
             element: <Stats />,
@@ -49,6 +51,7 @@ const router = createBrowserRouter([
           {
             path: "all-jobs",
             element: <AllJobs />,
+            loader: AllJobsLoader,
           },
         ],
       },

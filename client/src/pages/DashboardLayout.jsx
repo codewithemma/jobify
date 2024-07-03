@@ -17,7 +17,6 @@ const DashboardContext = createContext();
 
 const DashboardLayout = ({ isDarkThemeEnabled }) => {
   const { user } = useLoaderData();
-  console.log(user);
   const navigate = useNavigate();
   const [showSidebar, setShowSidebar] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(isDarkThemeEnabled);
