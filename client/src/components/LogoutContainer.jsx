@@ -6,6 +6,8 @@ import { FaCaretDown, FaUserCircle } from "react-icons/fa";
 const LogoutContainer = () => {
   const [showLogout, setShowLogout] = useState(false);
   const { user, logoutUser } = useDashboardContext();
+  const { name } = user.data.user;
+
   return (
     <Wrapper>
       <button
@@ -16,9 +18,13 @@ const LogoutContainer = () => {
         }}
       >
         <span>
-          <FaUserCircle />
+          {user.avatar ? (
+            <img src={user.avatar} alt="img" className="img" />
+          ) : (
+            <FaUserCircle />
+          )}
         </span>
-        {user?.name}
+        {name}
         <FaCaretDown />
       </button>
       <div className={showLogout ? "dropdown show-dropdown" : "dropdown"}>

@@ -16,7 +16,7 @@ export const action = async ({ request }) => {
   try {
     await customFetch.post("/jobs", data);
     toast.success("Job added successful");
-    return redirect("/all-jobs");
+    return redirect("/dashboard/all-jobs");
   } catch (error) {
     toast.error(error?.response?.data?.message);
     return error;

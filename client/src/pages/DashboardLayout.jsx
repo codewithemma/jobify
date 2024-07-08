@@ -6,8 +6,9 @@ import { customFetch } from "../utils/customFetch";
 import { toast } from "react-toastify";
 export const loader = async () => {
   try {
-    const data = await customFetch.get("/users/current-user");
-    return data;
+    const user = await customFetch.get("/users/current-user");
+    // console.log(user);
+    return user;
   } catch (error) {
     return redirect("/");
   }
@@ -16,7 +17,8 @@ export const loader = async () => {
 const DashboardContext = createContext();
 
 const DashboardLayout = ({ isDarkThemeEnabled }) => {
-  const { user } = useLoaderData();
+  const user = useLoaderData();
+  // console.log(user);
   const navigate = useNavigate();
   const [showSidebar, setShowSidebar] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(isDarkThemeEnabled);
