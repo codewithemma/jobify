@@ -3,6 +3,7 @@ import {
   Form,
   Link,
   redirect,
+  useNavigate,
   // useActionData,
   useNavigation,
 } from "react-router-dom";
@@ -19,7 +20,7 @@ export const action = async ({ request }) => {
   //   return errors.message;
   // }
   try {
-    await customFetch.post("auth/login", data);
+    await customFetch.post("/auth/login", data);
     toast.success("Login Successful");
     return redirect("/dashboard");
   } catch (error) {
@@ -29,7 +30,24 @@ export const action = async ({ request }) => {
 };
 const Login = () => {
   const navigation = useNavigation();
+  const navigate = useNavigate();
+  const loginDemoUser = async () => {
+    const data = {
+      email: "t@t.com",
+      password: "secret123",
+    };
+    try {
+      await customFetch.post("/auth/login", data);
+      toast.success("Take a test drive");
+      navigate("/dashboard");
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+      return error;
+    }
+  };
+
   const isSubmitting = navigation.state === "submitting";
+
   // const errors = useActionData();
   return (
     <Wrapper>
@@ -42,7 +60,7 @@ const Login = () => {
         <button type="submit" className="btn btn-block" disabled={isSubmitting}>
           {isSubmitting ? "Logging in..." : "Submit"}
         </button>
-        <button type="button" className="btn btn-block">
+        <button type="button" className="btn btn-block" onClick={loginDemoUser}>
           Explore the app
         </button>
         <p>
