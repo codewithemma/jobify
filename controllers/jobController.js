@@ -86,19 +86,5 @@ export const showStats = async (req, res) => {
     })
     .reverse();
 
-  // let monthlyApplications = [
-  //   {
-  //     date: "May 23",
-  //     count: 12,
-  //   },
-  //   {
-  //     date: "June 23",
-  //     count: 22,
-  //   },
-  //   {
-  //     date: "July 3",
-  //     count: 52,
-  //   },
-  // ];
   res.status(StatusCodes.OK).json({ defaultStats, monthlyApplications });
 };
